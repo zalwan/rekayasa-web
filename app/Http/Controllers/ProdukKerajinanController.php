@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProdukKerajinan;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
@@ -71,6 +73,15 @@ class ProdukKerajinanController extends Controller
         $produk->delete();
 
         return redirect()->route('produk.index')->with('success', 'Product deleted successfully.');
+    }
+
+    public function exportPdf(): Response
+    {
+        $pdf = Pdf::loadView('produk.pdf', [
+            'produks' => ProdukKerajinan::orderBy('id_produk')->get(),
+        ]);
+
+        return $pdf->download('daftar_produk_kerajinan.pdf');
     }
 
     private function validateProduct(Request $request, ?ProdukKerajinan $produk = null): array

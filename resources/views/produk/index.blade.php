@@ -10,9 +10,10 @@
         </div>
 
         @auth
-            <a href="{{ route('produk.create') }}" class="inline-flex rounded-md bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700">
-                Add Product
-            </a>
+            <div class="flex gap-2">
+                <a href="{{ route('produk.export-pdf') }}" class="inline-flex rounded-md bg-green-600 px-4 py-2 font-medium text-white hover:bg-green-700">Export PDF</a>
+                <a href="{{ route('produk.create') }}" class="inline-flex rounded-md bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700">Add Product</a>
+            </div>
         @endauth
     </div>
 
