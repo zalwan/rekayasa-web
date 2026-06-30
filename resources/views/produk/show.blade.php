@@ -4,8 +4,8 @@
 
 @section('content')
     <article class="grid gap-6 rounded-md border border-zinc-200 bg-white p-6 md:grid-cols-2">
-        @if ($produk->gambar)
-            <img src="{{ asset('storage/' . $produk->gambar) }}" alt="{{ $produk->nama_produk }}" class="h-80 w-full rounded-md object-cover">
+        @if ($produk->imageUrl())
+            <img src="{{ $produk->imageUrl() }}" alt="{{ $produk->nama_produk }}" class="h-80 w-full rounded-md object-cover">
         @else
             <div class="flex h-80 w-full items-center justify-center rounded-md bg-zinc-100 text-zinc-500">No Image</div>
         @endif

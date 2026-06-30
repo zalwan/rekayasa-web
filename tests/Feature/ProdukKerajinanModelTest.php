@@ -30,4 +30,13 @@ class ProdukKerajinanModelTest extends TestCase
         ]);
         $this->assertSame('produk_kerajinan', $produk->getTable());
     }
+
+    public function test_produk_kerajinan_resolves_storage_and_public_image_urls(): void
+    {
+        $storageImage = ProdukKerajinan::make(['gambar' => 'gambar_produk/vas.jpg']);
+        $publicImage = ProdukKerajinan::make(['gambar' => 'images/sample-products/vas.png']);
+
+        $this->assertSame(asset('storage/gambar_produk/vas.jpg'), $storageImage->imageUrl());
+        $this->assertSame(asset('images/sample-products/vas.png'), $publicImage->imageUrl());
+    }
 }

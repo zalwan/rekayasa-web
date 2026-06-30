@@ -11,8 +11,8 @@
                 <p class="mt-4 max-w-xl text-sm leading-6 text-zinc-600 sm:text-base">Temukan koleksi produk kerajinan tangan mulai dari rotan, bambu, kain tenun, kayu ukir, sampai kulit handmade.</p>
             </div>
             <div class="min-h-64 bg-zinc-100">
-                @if ($produks->first()?->gambar)
-                    <img src="{{ asset('storage/' . $produks->first()->gambar) }}" alt="{{ $produks->first()->nama_produk }}" class="h-full min-h-64 w-full object-cover">
+                @if ($produks->first()?->imageUrl())
+                    <img src="{{ $produks->first()->imageUrl() }}" alt="{{ $produks->first()->nama_produk }}" class="h-full min-h-64 w-full object-cover">
                 @else
                     <div class="flex h-full min-h-64 items-center justify-center text-zinc-500">Produk Kerajinan</div>
                 @endif
@@ -38,8 +38,8 @@
                 @foreach ($produks as $produk)
                     <article class="overflow-hidden rounded-md border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                         <a href="{{ route('produk.show', $produk) }}" class="block">
-                            @if ($produk->gambar)
-                                <img src="{{ asset('storage/' . $produk->gambar) }}" alt="{{ $produk->nama_produk }}" class="aspect-[4/3] w-full object-cover">
+                            @if ($produk->imageUrl())
+                                <img src="{{ $produk->imageUrl() }}" alt="{{ $produk->nama_produk }}" class="aspect-[4/3] w-full object-cover">
                             @else
                                 <div class="flex aspect-[4/3] w-full items-center justify-center bg-zinc-100 text-sm text-zinc-500">No Image</div>
                             @endif

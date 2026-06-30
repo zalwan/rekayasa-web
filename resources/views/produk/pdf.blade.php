@@ -30,8 +30,8 @@
                 <tr>
                     <td>{{ $produk->id_produk }}</td>
                     <td>
-                        @if ($produk->gambar && file_exists(public_path('storage/' . $produk->gambar)))
-                            <img src="{{ public_path('storage/' . $produk->gambar) }}" alt="{{ $produk->nama_produk }}">
+                        @if ($produk->imagePublicPath() && file_exists($produk->imagePublicPath()))
+                            <img src="{{ $produk->imagePublicPath() }}" alt="{{ $produk->nama_produk }}">
                         @else
                             -
                         @endif

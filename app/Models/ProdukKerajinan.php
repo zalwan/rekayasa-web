@@ -19,4 +19,30 @@ class ProdukKerajinan extends Model
         'harga',
         'pengrajin',
     ];
+
+    public function imageUrl(): ?string
+    {
+        if (! $this->gambar) {
+            return null;
+        }
+
+        if (str_starts_with($this->gambar, 'images/')) {
+            return asset($this->gambar);
+        }
+
+        return asset('storage/' . $this->gambar);
+    }
+
+    public function imagePublicPath(): ?string
+    {
+        if (! $this->gambar) {
+            return null;
+        }
+
+        if (str_starts_with($this->gambar, 'images/')) {
+            return public_path($this->gambar);
+        }
+
+        return public_path('storage/' . $this->gambar);
+    }
 }

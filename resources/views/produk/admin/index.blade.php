@@ -38,8 +38,8 @@
                             <td>{{ $produk->id_produk }}</td>
                             <td>
                                 <a href="{{ route('produk.show', $produk) }}">
-                                    @if ($produk->gambar)
-                                        <img src="{{ asset('storage/' . $produk->gambar) }}" alt="{{ $produk->nama_produk }}" class="h-16 w-16 rounded-md object-cover">
+                                    @if ($produk->imageUrl())
+                                        <img src="{{ $produk->imageUrl() }}" alt="{{ $produk->nama_produk }}" class="h-16 w-16 rounded-md object-cover">
                                     @else
                                         <span class="text-zinc-500">No Image</span>
                                     @endif

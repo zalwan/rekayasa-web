@@ -56,8 +56,8 @@
 <div class="mt-5">
     <p class="mb-2 text-sm font-medium text-zinc-700">Preview Gambar</p>
     <div class="overflow-hidden rounded-md border border-dashed border-zinc-300 bg-zinc-50">
-        @if ($produk?->gambar)
-            <img id="image-preview" src="{{ asset('storage/' . $produk->gambar) }}" alt="{{ $produk->nama_produk }}" class="aspect-[16/9] w-full object-cover">
+        @if ($produk?->imageUrl())
+            <img id="image-preview" src="{{ $produk->imageUrl() }}" alt="{{ $produk->nama_produk }}" class="aspect-[16/9] w-full object-cover">
         @else
             <div id="image-preview-empty" class="flex aspect-[16/9] w-full items-center justify-center px-4 text-center text-sm text-zinc-500">Preview akan muncul setelah gambar dipilih.</div>
             <img id="image-preview" src="" alt="Preview gambar produk" class="hidden aspect-[16/9] w-full object-cover">
