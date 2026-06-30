@@ -2,12 +2,14 @@
 
 $basePath = dirname(__DIR__);
 $storagePath = '/tmp/storage';
+$bootstrapCachePath = '/tmp/bootstrap-cache';
 $databasePath = '/tmp/database.sqlite';
 $databaseTemplate = $basePath . '/database/vercel.sqlite';
 
 foreach ([
+    $bootstrapCachePath,
     $storagePath . '/app/public',
-    $storagePath . '/framework/cache',
+    $storagePath . '/framework/cache/data',
     $storagePath . '/framework/sessions',
     $storagePath . '/framework/views',
     $storagePath . '/logs',
@@ -30,6 +32,10 @@ foreach ([
     'SESSION_DRIVER' => 'file',
     'CACHE_STORE' => 'file',
     'QUEUE_CONNECTION' => 'sync',
+    'VIEW_COMPILED_PATH' => $storagePath . '/framework/views',
+    'APP_PACKAGES_CACHE' => $bootstrapCachePath . '/packages.php',
+    'APP_SERVICES_CACHE' => $bootstrapCachePath . '/services.php',
+    'LOG_CHANNEL' => 'stderr',
 ] as $key => $value) {
     putenv($key . '=' . $value);
     $_ENV[$key] = $value;
