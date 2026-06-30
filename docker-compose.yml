@@ -13,7 +13,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      APP_NAME: crud_uas_nim
+      APP_NAME: crud_uas_067
       APP_ENV: local
       APP_DEBUG: "true"
       APP_URL: http://localhost:8000
