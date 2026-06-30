@@ -35,7 +35,7 @@ class AuthTest extends TestCase
         $this->post('/login', [
             'username' => 'admin',
             'password' => 'password',
-        ])->assertRedirect(route('home'));
+        ])->assertRedirect(route('admin.produk.index'));
 
         $this->assertAuthenticatedAs($user);
     }

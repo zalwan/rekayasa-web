@@ -24,7 +24,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended(route('home'));
+            return redirect()->intended(route('admin.produk.index'));
         }
 
         return back()
