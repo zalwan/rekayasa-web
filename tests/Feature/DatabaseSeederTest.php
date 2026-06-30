@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\ProdukKerajinan;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class DatabaseSeederTest extends TestCase
@@ -23,5 +24,10 @@ class DatabaseSeederTest extends TestCase
             'bahan' => 'Rotan',
             'pengrajin' => 'Rizal Suryawan',
         ]);
+
+        ProdukKerajinan::all()->each(function (ProdukKerajinan $product): void {
+            $this->assertNotEmpty($product->gambar);
+            Storage::disk('public')->assertExists($product->gambar);
+        });
     }
 }
