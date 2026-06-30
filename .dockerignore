@@ -1,0 +1,11 @@
+.git
+.env
+PLAN.md
+node_modules
+vendor
+database/*.sqlite
+storage/app/public
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*
