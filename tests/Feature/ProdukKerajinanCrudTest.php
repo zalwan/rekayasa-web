@@ -32,7 +32,7 @@ class ProdukKerajinanCrudTest extends TestCase
             ->assertSee('Rizal');
     }
 
-    public function test_public_product_index_includes_datatable(): void
+    public function test_public_product_index_shows_catalog_without_datatable(): void
     {
         ProdukKerajinan::create([
             'id_produk' => 'PRD-006',
@@ -44,13 +44,31 @@ class ProdukKerajinanCrudTest extends TestCase
 
         $this->get(route('produk.index'))
             ->assertOk()
+            ->assertSee('product-catalog', false)
+            ->assertDontSee('id="products-table"', false)
+            ->assertDontSee('cdn.datatables.net', false);
+    }
+
+    public function test_admin_product_index_includes_datatable(): void
+    {
+        ProdukKerajinan::create([
+            'id_produk' => 'PRD-007',
+            'nama_produk' => 'Kotak Kayu',
+            'bahan' => 'Kayu',
+            'harga' => 180000,
+            'pengrajin' => 'Dina',
+        ]);
+
+        $this->actingAs($this->admin())
+            ->get(route('admin.produk.index'))
+            ->assertOk()
             ->assertSee('id="products-table"', false)
             ->assertSee('cdn.datatables.net', false);
     }
 
     public function test_guest_cannot_open_create_product_page(): void
     {
-        $this->get('/produk/create')
+        $this->get('/admin/produk/create')
             ->assertRedirect('/login');
     }
 
@@ -60,7 +78,7 @@ class ProdukKerajinanCrudTest extends TestCase
         Storage::fake('public');
 
         $this->actingAs($this->admin())
-            ->post('/produk', [
+            ->post('/admin/produk', [
                 'id_produk' => 'PRD-002',
                 'nama_produk' => 'Tas Tenun',
                 'bahan' => 'Kain',
@@ -68,7 +86,7 @@ class ProdukKerajinanCrudTest extends TestCase
                 'pengrajin' => 'Suryawan',
                 'gambar' => UploadedFile::fake()->image('tas.jpg'),
             ])
-            ->assertRedirect(route('produk.index'));
+            ->assertRedirect(route('admin.produk.index'));
 
         $produk = ProdukKerajinan::firstOrFail();
 
@@ -92,7 +110,7 @@ class ProdukKerajinanCrudTest extends TestCase
         ]);
 
         $this->actingAs($this->admin())
-            ->put("/produk/{$produk->id}", [
+            ->put("/admin/produk/{$produk->id}", [
                 'id_produk' => 'PRD-004',
                 'nama_produk' => 'Lampu Bambu Ukir',
                 'bahan' => 'Bambu Hitam',
@@ -100,7 +118,7 @@ class ProdukKerajinanCrudTest extends TestCase
                 'pengrajin' => 'Asep',
                 'gambar' => UploadedFile::fake()->image('new.jpg'),
             ])
-            ->assertRedirect(route('produk.index'));
+            ->assertRedirect(route('admin.produk.index'));
 
         $produk->refresh();
 
@@ -125,8 +143,8 @@ class ProdukKerajinanCrudTest extends TestCase
         ]);
 
         $this->actingAs($this->admin())
-            ->delete("/produk/{$produk->id}")
-            ->assertRedirect(route('produk.index'));
+            ->delete("/admin/produk/{$produk->id}")
+            ->assertRedirect(route('admin.produk.index'));
 
         $this->assertDatabaseMissing('produk_kerajinan', ['id' => $produk->id]);
         Storage::disk('public')->assertMissing($image);

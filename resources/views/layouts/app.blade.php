@@ -13,6 +13,7 @@
             <a href="{{ route('home') }}" class="text-lg font-semibold">Handicraft Products</a>
             <div class="flex items-center gap-4 text-sm">
                 @auth
+                    <a href="{{ route('admin.produk.index') }}" class="font-medium text-blue-600 hover:text-blue-700">Admin Produk</a>
                     <span class="font-medium">{{ auth()->user()->username }}</span>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf

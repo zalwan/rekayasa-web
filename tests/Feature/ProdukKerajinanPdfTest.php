@@ -14,7 +14,7 @@ class ProdukKerajinanPdfTest extends TestCase
 
     public function test_guest_cannot_export_pdf(): void
     {
-        $this->get('/produk/export-pdf')
+        $this->get('/admin/produk/export-pdf')
             ->assertRedirect('/login');
     }
 
@@ -29,7 +29,7 @@ class ProdukKerajinanPdfTest extends TestCase
         ]);
 
         $this->actingAs($this->admin())
-            ->get('/produk/export-pdf')
+            ->get('/admin/produk/export-pdf')
             ->assertOk()
             ->assertHeader('content-type', 'application/pdf');
     }
