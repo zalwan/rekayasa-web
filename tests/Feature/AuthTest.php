@@ -1,0 +1,56 @@
+<?php
+
+namespace Tests\Feature;
+
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Http\Middleware\ValidateCsrfToken;
+use Illuminate\Support\Facades\Hash;
+use Tests\TestCase;
+
+class AuthTest extends TestCase
+{
+    use RefreshDatabase;
+
+    public function test_login_page_can_be_rendered(): void
+    {
+        $this->get('/login')->assertOk()->assertSee('Login');
+    }
+
+    public function test_user_can_login_with_username_and_password(): void
+    {
+        $this->withoutMiddleware(ValidateCsrfToken::class);
+
+        $user = User::create([
+            'name' => 'Admin',
+            'username' => 'admin',
+            'email' => 'admin@example.com',
+            'password' => Hash::make('password'),
+        ]);
+
+        $this->post('/login', [
+            'username' => 'admin',
+            'password' => 'password',
+        ])->assertRedirect(route('home'));
+
+        $this->assertAuthenticatedAs($user);
+    }
+
+    public function test_user_can_logout(): void
+    {
+        $this->withoutMiddleware(ValidateCsrfToken::class);
+
+        $user = User::create([
+            'name' => 'Admin',
+            'username' => 'admin',
+            'email' => 'admin@example.com',
+            'password' => Hash::make('password'),
+        ]);
+
+        $this->actingAs($user)
+            ->post('/logout')
+            ->assertRedirect(route('home'));
+
+        $this->assertGuest();
+    }
+}
