@@ -72,6 +72,20 @@ class ProdukKerajinanCrudTest extends TestCase
             ->assertRedirect('/login');
     }
 
+    public function test_authenticated_user_can_open_indonesian_create_product_form(): void
+    {
+        $this->actingAs($this->admin())
+            ->get('/admin/produk/create')
+            ->assertOk()
+            ->assertSeeText('Tambah Produk')
+            ->assertSeeText('ID Produk')
+            ->assertSeeText('Contoh: PKT-007')
+            ->assertSeeText('Harga')
+            ->assertSeeText('Masukkan angka tanpa titik atau koma.')
+            ->assertSee('image-preview', false)
+            ->assertSee('previewProductImage', false);
+    }
+
     public function test_authenticated_user_can_create_product_with_image(): void
     {
         $this->withoutMiddleware(ValidateCsrfToken::class);
