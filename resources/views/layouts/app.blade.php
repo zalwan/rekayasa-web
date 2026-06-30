@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', config('app.name', 'UAS Web Engineering'))</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @stack('styles')
 </head>
 <body class="min-h-screen bg-zinc-100 text-zinc-900 antialiased">
     <nav class="border-b border-zinc-200 bg-white">
@@ -51,5 +52,6 @@
             &copy; 2026 - Rizal Suryawan - UAS Web Engineering
         </div>
     </footer>
+    @stack('scripts')
 </body>
 </html>

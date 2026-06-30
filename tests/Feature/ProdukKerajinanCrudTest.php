@@ -32,6 +32,22 @@ class ProdukKerajinanCrudTest extends TestCase
             ->assertSee('Rizal');
     }
 
+    public function test_public_product_index_includes_datatable(): void
+    {
+        ProdukKerajinan::create([
+            'id_produk' => 'PRD-006',
+            'nama_produk' => 'Dompet Kulit',
+            'bahan' => 'Kulit',
+            'harga' => 150000,
+            'pengrajin' => 'Nanda',
+        ]);
+
+        $this->get(route('produk.index'))
+            ->assertOk()
+            ->assertSee('id="products-table"', false)
+            ->assertSee('cdn.datatables.net', false);
+    }
+
     public function test_guest_cannot_open_create_product_page(): void
     {
         $this->get('/produk/create')
