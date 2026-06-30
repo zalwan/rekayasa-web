@@ -5,6 +5,11 @@
 @section('content')
     <div class="mx-auto max-w-md rounded-md border border-zinc-200 bg-white p-6">
         <h1 class="text-2xl font-bold">Login</h1>
+        <div class="mt-4 rounded-md border border-blue-100 bg-blue-50 p-4 text-sm text-blue-900">
+            <p class="font-semibold">Akun demo admin</p>
+            <p class="mt-1">Username: <span class="font-mono font-semibold">admin</span></p>
+            <p>Password: <span class="font-mono font-semibold">password</span></p>
+        </div>
 
         <form action="{{ route('login') }}" method="POST" class="mt-6 space-y-4">
             @csrf

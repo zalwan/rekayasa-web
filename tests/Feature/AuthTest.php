@@ -14,7 +14,11 @@ class AuthTest extends TestCase
 
     public function test_login_page_can_be_rendered(): void
     {
-        $this->get('/login')->assertOk()->assertSee('Login');
+        $this->get('/login')
+            ->assertOk()
+            ->assertSee('Login')
+            ->assertSeeText('Username: admin')
+            ->assertSeeText('Password: password');
     }
 
     public function test_user_can_login_with_username_and_password(): void
