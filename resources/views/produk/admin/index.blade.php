@@ -7,11 +7,11 @@
         <div>
             <p class="text-sm font-semibold uppercase text-blue-700">Admin</p>
             <h1 class="text-2xl font-bold">Kelola Produk Kerajinan</h1>
-            <p class="mt-1 text-sm text-zinc-600">Gunakan tabel ini untuk mencari, mengurutkan, menambah, mengedit, menghapus, dan export PDF.</p>
+            <p class="mt-1 text-sm text-zinc-600">Gunakan tabel ini untuk mencari, mengurutkan, menambah, mengedit, menghapus, dan ekspor PDF.</p>
         </div>
 
         <div class="flex flex-wrap gap-2">
-            <a href="{{ route('admin.produk.export-pdf') }}" class="inline-flex rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700">Export PDF</a>
+            <a href="{{ route('admin.produk.export-pdf') }}" class="inline-flex rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700">Ekspor PDF</a>
             <a href="{{ route('admin.produk.create') }}" class="inline-flex rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">Tambah Produk</a>
         </div>
     </div>
@@ -41,7 +41,7 @@
                                     @if ($produk->imageUrl())
                                         <img src="{{ $produk->imageUrl() }}" alt="{{ $produk->nama_produk }}" class="h-16 w-16 rounded-md object-cover">
                                     @else
-                                        <span class="text-zinc-500">No Image</span>
+                                        <span class="text-zinc-500">Tidak ada gambar</span>
                                     @endif
                                 </a>
                             </td>
@@ -54,10 +54,10 @@
                             <td>
                                 <div class="flex gap-2">
                                     <a href="{{ route('admin.produk.edit', $produk) }}" class="rounded-md bg-amber-500 px-3 py-1.5 text-sm font-medium text-white hover:bg-amber-600">Edit</a>
-                                    <form action="{{ route('admin.produk.destroy', $produk) }}" method="POST" onsubmit="return confirm('Delete this product?')">
+                                    <form action="{{ route('admin.produk.destroy', $produk) }}" method="POST" onsubmit="return confirm('Hapus produk ini?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="rounded-md bg-red-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-700">Delete</button>
+                                        <button type="submit" class="rounded-md bg-red-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-700">Hapus</button>
                                     </form>
                                 </div>
                             </td>

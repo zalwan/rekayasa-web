@@ -9,7 +9,7 @@
                 @if ($produk->imageUrl())
                     <img src="{{ $produk->imageUrl() }}" alt="{{ $produk->nama_produk }}" class="aspect-[4/3] w-full rounded-md object-cover">
                 @else
-                    <div class="flex aspect-[4/3] w-full items-center justify-center rounded-md bg-zinc-200 text-sm text-zinc-500">No Image</div>
+                    <div class="flex aspect-[4/3] w-full items-center justify-center rounded-md bg-zinc-200 text-sm text-zinc-500">Tidak ada gambar</div>
                 @endif
             </div>
 

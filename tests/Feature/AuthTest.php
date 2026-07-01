@@ -16,7 +16,7 @@ class AuthTest extends TestCase
     {
         $this->get('/login')
             ->assertOk()
-            ->assertSee('Login')
+            ->assertSee('Masuk')
             ->assertSeeText('Username: admin')
             ->assertSeeText('Password: password');
     }
@@ -38,6 +38,17 @@ class AuthTest extends TestCase
         ])->assertRedirect(route('admin.produk.index'));
 
         $this->assertAuthenticatedAs($user);
+    }
+
+    public function test_invalid_login_shows_indonesian_error_message(): void
+    {
+        $this->withoutMiddleware(ValidateCsrfToken::class);
+
+        $this->post('/login', [
+            'username' => 'admin',
+            'password' => 'wrong-password',
+        ])
+            ->assertSessionHasErrors(['username' => 'Username atau password salah.']);
     }
 
     public function test_user_can_logout(): void

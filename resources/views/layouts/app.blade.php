@@ -12,10 +12,10 @@
         <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
             <a href="{{ route('home') }}" class="text-lg font-semibold">Produk kerajinan</a>
             <div class="flex flex-wrap items-center gap-4 text-sm">
-                <a href="{{ route('home') }}" class="font-medium {{ request()->routeIs('home') ? 'text-emerald-700' : 'text-zinc-600 hover:text-zinc-950' }}">Home</a>
-                <a href="{{ route('produk.index') }}" class="font-medium {{ request()->routeIs('produk.*') ? 'text-emerald-700' : 'text-zinc-600 hover:text-zinc-950' }}">Product</a>
-                <a href="{{ route('about') }}" class="font-medium {{ request()->routeIs('about') ? 'text-emerald-700' : 'text-zinc-600 hover:text-zinc-950' }}">About</a>
-                <a href="{{ route('contact') }}" class="font-medium {{ request()->routeIs('contact') ? 'text-emerald-700' : 'text-zinc-600 hover:text-zinc-950' }}">Contact</a>
+                <a href="{{ route('home') }}" class="font-medium {{ request()->routeIs('home') ? 'text-emerald-700' : 'text-zinc-600 hover:text-zinc-950' }}">Beranda</a>
+                <a href="{{ route('produk.index') }}" class="font-medium {{ request()->routeIs('produk.*') ? 'text-emerald-700' : 'text-zinc-600 hover:text-zinc-950' }}">Produk</a>
+                <a href="{{ route('about') }}" class="font-medium {{ request()->routeIs('about') ? 'text-emerald-700' : 'text-zinc-600 hover:text-zinc-950' }}">Tentang</a>
+                <a href="{{ route('contact') }}" class="font-medium {{ request()->routeIs('contact') ? 'text-emerald-700' : 'text-zinc-600 hover:text-zinc-950' }}">Kontak</a>
                 @auth
                     <a href="{{ route('admin.produk.index') }}" class="font-medium text-blue-600 hover:text-blue-700">Admin Produk</a>
                     <span class="font-medium">{{ auth()->user()->username }}</span>
@@ -25,7 +25,7 @@
                     </form>
                 @else
                     @if (Route::has('login'))
-                        <a href="{{ route('login') }}" class="font-medium text-blue-600 hover:text-blue-700">Login</a>
+                        <a href="{{ route('login') }}" class="font-medium text-blue-600 hover:text-blue-700">Masuk</a>
                     @endif
                 @endauth
             </div>

@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Login')
+@section('title', 'Masuk')
 
 @section('content')
     <div class="mx-auto max-w-md rounded-md border border-zinc-200 bg-white p-6">
-        <h1 class="text-2xl font-bold">Login</h1>
+        <h1 class="text-2xl font-bold">Masuk</h1>
         <div class="mt-4 rounded-md border border-blue-100 bg-blue-50 p-4 text-sm text-blue-900">
             <p class="font-semibold">Akun demo admin</p>
             <p class="mt-1">Username: <span class="font-mono font-semibold">admin</span></p>
@@ -38,7 +38,7 @@
             </div>
 
             <button type="submit" class="rounded-md bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700">
-                Login
+                Masuk
             </button>
         </form>
     </div>

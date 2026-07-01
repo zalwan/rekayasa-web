@@ -8,13 +8,13 @@
             <div class="flex flex-col justify-center p-6 sm:p-10 lg:p-12">
                 <div class="flex flex-wrap items-center gap-2">
                     <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase text-emerald-700">Beranda</span>
-                    <span class="rounded-full bg-zinc-100 px-3 py-1 text-xs font-semibold uppercase text-zinc-600">Tugas UAS Rekayasa Web</span>
+                    <span class="rounded-full bg-zinc-100 px-3 py-1 text-xs font-semibold uppercase text-zinc-600">Kerajinan Lokal Pilihan</span>
                 </div>
                 <h1 class="mt-5 max-w-2xl text-4xl font-bold leading-tight text-zinc-950 sm:text-5xl">Produk Kerajinan Tangan</h1>
-                <p class="mt-4 max-w-xl text-base leading-7 text-zinc-600">Katalog digital untuk produk kerajinan lokal, dibuat dengan Laravel sebagai project UAS yang rapi, mudah dibaca, dan siap dipresentasikan.</p>
+                <p class="mt-4 max-w-xl text-base leading-7 text-zinc-600">Temukan pilihan kerajinan tangan lokal dengan bahan berkualitas, tampilan detail produk yang jelas, dan informasi pengrajin yang mudah dipahami.</p>
                 <div class="mt-7 flex flex-wrap gap-3">
                     <a href="{{ route('produk.index') }}" class="rounded-md bg-emerald-700 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-800">Lihat Produk</a>
-                    <a href="{{ route('about') }}" class="rounded-md border border-zinc-300 px-5 py-3 text-sm font-semibold text-zinc-700 hover:bg-zinc-50">Tentang Project</a>
+                    <a href="{{ route('about') }}" class="rounded-md border border-zinc-300 px-5 py-3 text-sm font-semibold text-zinc-700 hover:bg-zinc-50">Tentang Katalog</a>
                 </div>
                 <dl class="mt-8 grid max-w-xl grid-cols-3 gap-3 border-t border-zinc-100 pt-6 text-sm">
                     <div>
@@ -27,7 +27,7 @@
                     </div>
                     <div>
                         <dt class="text-2xl font-bold text-zinc-950">PDF</dt>
-                        <dd class="mt-1 text-zinc-500">export laporan</dd>
+                        <dd class="mt-1 text-zinc-500">ekspor laporan</dd>
                     </div>
                 </dl>
             </div>
@@ -53,9 +53,9 @@
             <p class="mt-2 text-sm leading-6 text-zinc-600">Kelola produk dari halaman admin dengan form upload gambar dan validasi.</p>
         </div>
         <div class="rounded-md border border-zinc-200 bg-white p-5">
-            <p class="text-sm font-semibold text-amber-700">Project</p>
-            <h2 class="mt-2 text-lg font-bold text-zinc-950">Tugas UAS</h2>
-            <p class="mt-2 text-sm leading-6 text-zinc-600">Dibuat sebagai implementasi Laravel, Blade, Tailwind CSS, MySQL, dan DomPDF.</p>
+            <p class="text-sm font-semibold text-amber-700">Kualitas</p>
+            <h2 class="mt-2 text-lg font-bold text-zinc-950">Informasi jelas</h2>
+            <p class="mt-2 text-sm leading-6 text-zinc-600">Setiap produk dilengkapi detail bahan, harga, dan pengrajin agar mudah dibandingkan.</p>
         </div>
     </section>
 @endsection

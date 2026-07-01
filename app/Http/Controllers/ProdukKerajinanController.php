@@ -41,7 +41,7 @@ class ProdukKerajinanController extends Controller
 
         ProdukKerajinan::create($validated);
 
-        return redirect()->route('admin.produk.index')->with('success', 'Product added successfully.');
+        return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil ditambahkan.');
     }
 
     public function show(ProdukKerajinan $produk): View
@@ -68,7 +68,7 @@ class ProdukKerajinanController extends Controller
 
         $produk->update($validated);
 
-        return redirect()->route('admin.produk.index')->with('success', 'Product updated successfully.');
+        return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil diperbarui.');
     }
 
     public function destroy(ProdukKerajinan $produk): RedirectResponse
@@ -79,7 +79,7 @@ class ProdukKerajinanController extends Controller
 
         $produk->delete();
 
-        return redirect()->route('admin.produk.index')->with('success', 'Product deleted successfully.');
+        return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil dihapus.');
     }
 
     public function exportPdf(): Response

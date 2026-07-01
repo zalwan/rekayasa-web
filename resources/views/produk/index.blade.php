@@ -25,7 +25,7 @@
                             @if ($produk->imageUrl())
                                 <img src="{{ $produk->imageUrl() }}" alt="{{ $produk->nama_produk }}" class="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-105">
                             @else
-                                <div class="flex aspect-[4/3] w-full items-center justify-center text-sm text-zinc-500">No Image</div>
+                                <div class="flex aspect-[4/3] w-full items-center justify-center text-sm text-zinc-500">Tidak ada gambar</div>
                             @endif
                                 <span class="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-emerald-700 shadow-sm">Kode Produk</span>
                             </div>

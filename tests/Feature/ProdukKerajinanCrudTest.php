@@ -105,7 +105,8 @@ class ProdukKerajinanCrudTest extends TestCase
             ->get(route('admin.produk.index'))
             ->assertOk()
             ->assertSee('id="products-table"', false)
-            ->assertSee('cdn.datatables.net', false);
+            ->assertSee('cdn.datatables.net', false)
+            ->assertSeeText('Ekspor PDF');
     }
 
     public function test_guest_cannot_open_create_product_page(): void
@@ -142,7 +143,8 @@ class ProdukKerajinanCrudTest extends TestCase
                 'pengrajin' => 'Suryawan',
                 'gambar' => UploadedFile::fake()->image('tas.jpg'),
             ])
-            ->assertRedirect(route('admin.produk.index'));
+            ->assertRedirect(route('admin.produk.index'))
+            ->assertSessionHas('success', 'Produk berhasil ditambahkan.');
 
         $produk = ProdukKerajinan::firstOrFail();
 
@@ -174,7 +176,8 @@ class ProdukKerajinanCrudTest extends TestCase
                 'pengrajin' => 'Asep',
                 'gambar' => UploadedFile::fake()->image('new.jpg'),
             ])
-            ->assertRedirect(route('admin.produk.index'));
+            ->assertRedirect(route('admin.produk.index'))
+            ->assertSessionHas('success', 'Produk berhasil diperbarui.');
 
         $produk->refresh();
 
@@ -200,7 +203,8 @@ class ProdukKerajinanCrudTest extends TestCase
 
         $this->actingAs($this->admin())
             ->delete("/admin/produk/{$produk->id}")
-            ->assertRedirect(route('admin.produk.index'));
+            ->assertRedirect(route('admin.produk.index'))
+            ->assertSessionHas('success', 'Produk berhasil dihapus.');
 
         $this->assertDatabaseMissing('produk_kerajinan', ['id' => $produk->id]);
         Storage::disk('public')->assertMissing($image);

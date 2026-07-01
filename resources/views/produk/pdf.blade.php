@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Handicraft Products Report</title>
+    <title>Laporan Produk Kerajinan</title>
     <style>
         body { font-family: DejaVu Sans, sans-serif; font-size: 12px; color: #18181b; }
         h1 { margin-bottom: 16px; font-size: 20px; }
@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-    <h1>Handicraft Products List</h1>
+    <h1>Daftar Produk Kerajinan</h1>
     <table>
         <thead>
             <tr>
