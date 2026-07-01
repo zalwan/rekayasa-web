@@ -47,8 +47,13 @@ class StaticPagesTest extends TestCase
     {
         $this->get(route('contact'))
             ->assertOk()
+            ->assertSee('profile-card', false)
             ->assertSeeText('RIZAL SURYAWAN')
+            ->assertSeeText('Project Owner')
             ->assertSeeText('03SIFE003')
+            ->assertSeeText('Tugas UAS Rekayasa Web')
+            ->assertSeeText('Website')
+            ->assertSeeText('LinkedIn')
             ->assertSee('https://zal.pages.dev', false)
             ->assertSee('https://id.linkedin.com/in/rizal-suryawan/in', false)
             ->assertSee('https://zal.pages.dev/img/rizal-img.webp', false);
