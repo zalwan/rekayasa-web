@@ -10,7 +10,13 @@
 <body class="min-h-screen flex flex-col bg-zinc-100 text-zinc-900 antialiased">
     <nav class="border-b border-zinc-200 bg-white">
         <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
-            <a href="{{ route('home') }}" class="text-lg font-semibold">Produk kerajinan</a>
+            <a href="{{ route('home') }}" class="brand-logo inline-flex items-center gap-3">
+                <span class="flex h-10 w-10 items-center justify-center rounded-md bg-emerald-700 text-sm font-bold text-white shadow-sm">KL</span>
+                <span class="leading-tight">
+                    <span class="block text-lg font-bold text-zinc-950">Kriya Lokal</span>
+                    <span class="block text-xs font-medium text-zinc-500">Kerajinan tangan</span>
+                </span>
+            </a>
             <div class="flex flex-wrap items-center gap-4 text-sm">
                 <a href="{{ route('home') }}" class="font-medium {{ request()->routeIs('home') ? 'text-emerald-700' : 'text-zinc-600 hover:text-zinc-950' }}">Beranda</a>
                 <a href="{{ route('produk.index') }}" class="font-medium {{ request()->routeIs('produk.*') ? 'text-emerald-700' : 'text-zinc-600 hover:text-zinc-950' }}">Produk</a>

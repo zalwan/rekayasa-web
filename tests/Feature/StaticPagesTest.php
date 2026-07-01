@@ -14,6 +14,10 @@ class StaticPagesTest extends TestCase
     {
         $this->get(route('home'))
             ->assertOk()
+            ->assertSee('brand-logo', false)
+            ->assertSeeText('KL')
+            ->assertSeeText('Kriya Lokal')
+            ->assertSeeText('Kerajinan tangan')
             ->assertSeeText('Beranda')
             ->assertSeeText('Produk Kerajinan Tangan')
             ->assertSeeText('Kerajinan Lokal Pilihan')
