@@ -4,7 +4,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProdukKerajinanController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [ProdukKerajinanController::class, 'publicIndex'])->name('home');
+Route::view('/', 'home')->name('home');
+Route::view('/about', 'about')->name('about');
+Route::view('/contact', 'contact')->name('contact');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

@@ -25,7 +25,7 @@ class ProdukKerajinanCrudTest extends TestCase
             'pengrajin' => 'Rizal',
         ]);
 
-        $this->get(route('home'))
+        $this->get(route('produk.index'))
             ->assertOk()
             ->assertSee('Vas Anyaman')
             ->assertSee('Rotan')
