@@ -16,6 +16,12 @@ class StaticPagesTest extends TestCase
             ->assertOk()
             ->assertSeeText('Beranda')
             ->assertSeeText('Produk Kerajinan Tangan')
+            ->assertSeeText('Tugas UAS Rekayasa Web')
+            ->assertSeeText('6')
+            ->assertSeeText('produk contoh')
+            ->assertSee('pkt-001-vas-anyaman-rotan.png', false)
+            ->assertSee('pkt-002-tas-tenun-etnik.png', false)
+            ->assertSee('pkt-003-lampu-hias-bambu.png', false)
             ->assertSee(route('produk.index'), false);
     }
 
