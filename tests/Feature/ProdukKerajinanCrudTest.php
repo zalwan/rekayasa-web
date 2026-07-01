@@ -46,7 +46,9 @@ class ProdukKerajinanCrudTest extends TestCase
             ->assertOk()
             ->assertSee('product-catalog', false)
             ->assertDontSee('id="products-table"', false)
-            ->assertDontSee('cdn.datatables.net', false);
+            ->assertDontSee('cdn.datatables.net', false)
+            ->assertDontSeeText('Katalog Kerajinan Tangan')
+            ->assertDontSeeText('Produk buatan pengrajin lokal dengan bahan pilihan.');
     }
 
     public function test_admin_product_index_includes_datatable(): void

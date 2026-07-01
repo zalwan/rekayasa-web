@@ -3,23 +3,6 @@
 @section('title', 'Katalog Produk Kerajinan')
 
 @section('content')
-    <section class="mb-8 overflow-hidden rounded-md border border-zinc-200 bg-white">
-        <div class="grid gap-0 md:grid-cols-[1.1fr_0.9fr]">
-            <div class="flex flex-col justify-center p-6 sm:p-8">
-                <p class="text-sm font-semibold uppercase text-emerald-700">Katalog Kerajinan Tangan</p>
-                <h1 class="mt-3 max-w-2xl text-3xl font-bold leading-tight text-zinc-950 sm:text-4xl">Produk buatan pengrajin lokal dengan bahan pilihan.</h1>
-                <p class="mt-4 max-w-xl text-sm leading-6 text-zinc-600 sm:text-base">Temukan koleksi produk kerajinan tangan mulai dari rotan, bambu, kain tenun, kayu ukir, sampai kulit handmade.</p>
-            </div>
-            <div class="min-h-64 bg-zinc-100">
-                @if ($produks->first()?->imageUrl())
-                    <img src="{{ $produks->first()->imageUrl() }}" alt="{{ $produks->first()->nama_produk }}" class="h-full min-h-64 w-full object-cover">
-                @else
-                    <div class="flex h-full min-h-64 items-center justify-center text-zinc-500">Produk Kerajinan</div>
-                @endif
-            </div>
-        </div>
-    </section>
-
     <section id="product-catalog" class="space-y-5">
         <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
