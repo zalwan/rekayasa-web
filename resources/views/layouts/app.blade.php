@@ -7,7 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
 </head>
-<body class="min-h-screen bg-zinc-100 text-zinc-900 antialiased">
+<body class="min-h-screen flex flex-col bg-zinc-100 text-zinc-900 antialiased">
     <nav class="border-b border-zinc-200 bg-white">
         <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
             <a href="{{ route('home') }}" class="text-lg font-semibold">Produk kerajinan</a>
@@ -32,7 +32,7 @@
         </div>
     </nav>
 
-    <main class="mx-auto max-w-6xl px-4 py-8">
+    <main class="mx-auto max-w-6xl flex-1 px-4 py-8">
         @if (session('success'))
             <div class="mb-4 rounded-md bg-green-600 px-4 py-3 text-sm font-medium text-white">
                 {{ session('success') }}

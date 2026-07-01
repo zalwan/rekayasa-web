@@ -47,4 +47,12 @@ class StaticPagesTest extends TestCase
             ->assertSee('https://id.linkedin.com/in/rizal-suryawan/in', false)
             ->assertSee('https://zal.pages.dev/img/rizal-img.webp', false);
     }
+
+    public function test_layout_keeps_footer_at_bottom_on_short_pages(): void
+    {
+        $this->get(route('contact'))
+            ->assertOk()
+            ->assertSee('class="min-h-screen flex flex-col', false)
+            ->assertSee('<main class="mx-auto max-w-6xl flex-1', false);
+    }
 }
