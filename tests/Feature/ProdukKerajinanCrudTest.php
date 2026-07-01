@@ -54,6 +54,43 @@ class ProdukKerajinanCrudTest extends TestCase
             ->assertDontSeeText('Produk buatan pengrajin lokal dengan bahan pilihan.');
     }
 
+    public function test_public_product_detail_uses_polished_layout(): void
+    {
+        $produk = ProdukKerajinan::create([
+            'id_produk' => 'PRD-008',
+            'nama_produk' => 'Lampu Bambu Premium',
+            'bahan' => 'Bambu',
+            'harga' => 175000,
+            'pengrajin' => 'Asep',
+        ]);
+
+        $this->get(route('produk.show', $produk))
+            ->assertOk()
+            ->assertSee('product-detail', false)
+            ->assertSeeText('Kode Produk')
+            ->assertSeeText('Lampu Bambu Premium')
+            ->assertSeeText('Rp 175.000')
+            ->assertSeeText('Informasi Produk')
+            ->assertSeeText('Kembali ke Produk');
+    }
+
+    public function test_admin_can_access_edit_action_from_product_detail(): void
+    {
+        $produk = ProdukKerajinan::create([
+            'id_produk' => 'PRD-009',
+            'nama_produk' => 'Tas Tenun Detail',
+            'bahan' => 'Kain tenun',
+            'harga' => 225000,
+            'pengrajin' => 'Siti',
+        ]);
+
+        $this->actingAs($this->admin())
+            ->get(route('produk.show', $produk))
+            ->assertOk()
+            ->assertSeeText('Edit Produk')
+            ->assertSee(route('admin.produk.edit', $produk), false);
+    }
+
     public function test_admin_product_index_includes_datatable(): void
     {
         ProdukKerajinan::create([
