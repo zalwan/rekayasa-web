@@ -210,6 +210,17 @@ class ProdukKerajinanCrudTest extends TestCase
         Storage::disk('public')->assertMissing($image);
     }
 
+    public function test_uploaded_product_image_can_be_served_from_product_image_url(): void
+    {
+        Storage::fake('public');
+        Storage::disk('public')->put('gambar_produk/test.jpg', 'fake image content');
+
+        $response = $this->get('/produk-gambar/gambar_produk/test.jpg');
+
+        $response->assertOk();
+        $this->assertSame('fake image content', $response->streamedContent());
+    }
+
     private function admin(): User
     {
         return User::create([

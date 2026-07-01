@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProdukKerajinanController;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')->name('home');
@@ -11,6 +12,18 @@ Route::view('/contact', 'contact')->name('contact');
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/produk-gambar/{path}', function (string $path) {
+    if (! str_starts_with($path, 'gambar_produk/') || str_contains($path, '..')) {
+        abort(404);
+    }
+
+    if (! Storage::disk('public')->exists($path)) {
+        abort(404);
+    }
+
+    return Storage::disk('public')->response($path);
+})->where('path', '.*')->name('produk.image');
 
 Route::middleware('auth')->prefix('admin/produk')->name('admin.produk.')->group(function (): void {
     Route::get('/', [ProdukKerajinanController::class, 'adminIndex'])->name('index');

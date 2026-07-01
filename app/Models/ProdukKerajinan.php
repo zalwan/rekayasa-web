@@ -30,7 +30,7 @@ class ProdukKerajinan extends Model
             return asset($this->gambar);
         }
 
-        return asset('storage/' . $this->gambar);
+        return url('/produk-gambar/' . $this->gambar);
     }
 
     public function imagePublicPath(): ?string

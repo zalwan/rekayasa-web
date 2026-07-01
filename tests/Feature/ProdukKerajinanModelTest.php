@@ -36,7 +36,7 @@ class ProdukKerajinanModelTest extends TestCase
         $storageImage = ProdukKerajinan::make(['gambar' => 'gambar_produk/vas.jpg']);
         $publicImage = ProdukKerajinan::make(['gambar' => 'images/sample-products/vas.png']);
 
-        $this->assertSame(asset('storage/gambar_produk/vas.jpg'), $storageImage->imageUrl());
+        $this->assertSame(url('/produk-gambar/gambar_produk/vas.jpg'), $storageImage->imageUrl());
         $this->assertSame(asset('images/sample-products/vas.png'), $publicImage->imageUrl());
     }
 }
