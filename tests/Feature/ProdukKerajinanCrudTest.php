@@ -27,9 +27,12 @@ class ProdukKerajinanCrudTest extends TestCase
 
         $this->get(route('produk.index'))
             ->assertOk()
+            ->assertSee('product-card', false)
+            ->assertSeeText('Kode Produk')
             ->assertSee('Vas Anyaman')
             ->assertSee('Rotan')
-            ->assertSee('Rizal');
+            ->assertSee('Rizal')
+            ->assertSeeText('Lihat Detail');
     }
 
     public function test_public_product_index_shows_catalog_without_datatable(): void
